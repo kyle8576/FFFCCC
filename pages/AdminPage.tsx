@@ -32,10 +32,10 @@ const AdminPage: React.FC = () => {
                 value={password}
                 onChange={(e) => setPassword(e.target.value)}
                 className="w-full px-4 py-2 mt-2 text-white bg-gray-900 border border-gray-700 rounded focus:outline-none focus:border-amber-500"
-                placeholder="Enter password (admin)"
+                placeholder="Enter password"
               />
             </div>
-            {error && <p className="text-red-500 text-sm">Incorrect password. Try 'admin'.</p>}
+            {error && <p className="text-red-500 text-sm">Incorrect password.</p>}
             <button
               type="submit"
               className="w-full py-2 font-bold text-gray-900 bg-amber-500 rounded hover:bg-amber-400 transition-colors"

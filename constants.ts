@@ -5,7 +5,7 @@ export const INITIAL_PLAYERS: Player[] = Array.from({ length: 16 }, (_, i) => ({
   name: `Team ${i + 1}`,
 }));
 
-export const ADMIN_PASSWORD = 'admin';
+export const ADMIN_PASSWORD = 'face';
 
 // Helper to generate initial matches
 const generateInitialMatches = (): Record<string, Match> => {
