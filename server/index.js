@@ -1,8 +1,21 @@
+const http = require('http');
 const WebSocket = require('ws');
 
 const PORT = process.env.PORT || 8080;
 
-const wss = new WebSocket.Server({ port: PORT });
+// Create HTTP server for Fly.io compatibility
+const server = http.createServer((req, res) => {
+  // Health check endpoint
+  if (req.url === '/health') {
+    res.writeHead(200, { 'Content-Type': 'text/plain' });
+    res.end('OK');
+    return;
+  }
+  res.writeHead(200, { 'Content-Type': 'text/plain' });
+  res.end('Tournament WebSocket Server');
+});
+
+const wss = new WebSocket.Server({ server });
 
 // Store the latest tournament state
 let latestState = null;
@@ -10,7 +23,10 @@ let latestState = null;
 // Track connected clients
 const clients = new Set();
 
-console.log(`WebSocket server running on port ${PORT}`);
+// Start the server
+server.listen(PORT, () => {
+  console.log(`WebSocket server running on port ${PORT}`);
+});
 
 wss.on('connection', (ws) => {
   console.log('Client connected. Total clients:', clients.size + 1);
