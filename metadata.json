@@ -1,0 +1,5 @@
+{
+  "name": "Tournament Monolith",
+  "description": "A 16-person single-elimination tournament manager with real-time cross-tab synchronization. Features a viewer mode, an admin dashboard for managing live matches and winners, and undo functionality.",
+  "requestFramePermissions": []
+}

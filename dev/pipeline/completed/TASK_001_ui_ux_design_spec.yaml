@@ -1,0 +1,46 @@
+# TASK_001: UI/UX 設計規範
+# Schema: dev/schemas/TASK.schema.json
+
+id: "TASK_001"
+title: "UI/UX 設計規範 - 賽程系統視覺設計"
+description: |
+  為 16 人單淘汰賽程系統建立完整的 UI/UX 設計規範文件。
+  包含色彩系統、排版規範、組件樣式、狀態視覺層級等設計決策。
+  此設計規範將作為前端開發的視覺基準。
+
+priority: "P1"
+status: "pending"
+agent_type: "designer"
+source: "F-008"
+
+scope_paths:
+  - "design/"
+  - "docs/"
+
+requirements:
+  - "定義色彩系統：主色（LIVE）、勝利色（WIN）、中性色、禁用色（TBD）"
+  - "定義 Bracket 布局規範：四輪欄位排列方式"
+  - "定義 Match Card 組件樣式：pending/live/done 三種狀態"
+  - "定義 LIVE 高亮效果：外框、陰影、動畫"
+  - "定義 Header 與 LIVE 區塊的版型"
+  - "定義管理端的互動區域視覺提示"
+  - "定義 RWD 響應式斷點（投影/桌面/手機）"
+
+acceptance_criteria:
+  - "輸出設計規範文件 DESIGN_SPEC.md 包含完整色彩定義"
+  - "包含 Match Card 三種狀態的視覺規格"
+  - "包含 Bracket 四輪布局的設計說明"
+  - "包含 LIVE 高亮效果的具體 CSS 數值"
+  - "包含響應式設計的斷點定義"
+
+technical_notes:
+  - "設計應考慮現場投影的可讀性（高對比）"
+  - "LIVE 效果需醒目但不過度干擾"
+  - "TBD 狀態應明顯區分於已確定的選手"
+
+estimated_hours: 3
+complexity: "medium"
+
+metadata:
+  created_at: "2026-02-04T12:00:00+08:00"
+  created_by: "Product Manager Agent"

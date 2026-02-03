@@ -1,0 +1,55 @@
+# TASK_014: 端對端整合測試
+# Schema: dev/schemas/TASK.schema.json
+
+id: "TASK_014"
+title: "端對端整合測試"
+description: |
+  執行完整的端對端測試，驗證所有功能正常運作。
+  包含 Viewer、Admin、API、WebSocket 的整合測試。
+
+priority: "P1"
+status: "pending"
+agent_type: "qa"
+source: "F-001"
+feature_ids:
+  - "F-001"
+  - "F-002"
+  - "F-003"
+  - "F-004"
+  - "F-006"
+  - "F-007"
+
+dependencies:
+  - "TASK_013"
+
+scope_paths:
+  - "tests/"
+
+requirements:
+  - "測試 Viewer 頁面載入和賽程顯示"
+  - "測試 Admin 密碼驗證流程"
+  - "測試 setLive 功能和 LIVE 高亮"
+  - "測試 setWinner 功能和勝者推進"
+  - "測試 Undo 功能"
+  - "測試 WebSocket 即時同步"
+  - "測試防呆機制（TBD 不可 setLive、已決勝者不可再設）"
+
+acceptance_criteria:
+  - "任一場 winner 設定後，下一輪槽位正確填入"
+  - "不允許對 TBD 場設 LIVE"
+  - "不允許重複 setWinner（需 undo 才能改）"
+  - "WS 同步：兩個瀏覽器同時開啟，管理端操作後觀眾端即時更新"
+  - "重啟 server 後 state 能回復（若啟用落盤）"
+  - "完整賽程可從 R16 打到決賽產生冠軍"
+
+technical_notes:
+  - "可使用手動測試搭配 checklist"
+  - "WS 測試需開啟多個瀏覽器視窗"
+  - "測試晉級路徑的正確性是重點"
+
+estimated_hours: 4
+complexity: "complex"
+
+metadata:
+  created_at: "2026-02-04T12:00:00+08:00"
+  created_by: "Product Manager Agent"

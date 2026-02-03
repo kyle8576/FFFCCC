@@ -1,0 +1,54 @@
+# TASK_016: Viewer 頁面 RWD 實作
+# Schema: dev/schemas/TASK.schema.json
+
+id: "TASK_016"
+title: "Viewer 頁面 RWD 響應式實作"
+description: |
+  根據 RWD 設計規範，實作觀眾端頁面的響應式佈局，
+  確保在手機（<768px）與桌面（≥768px）上都有良好的瀏覽體驗。
+
+priority: "P1"
+status: "pending"
+agent_type: "frontend"
+source: "F-009.2"
+feature_ids:
+  - "F-009"
+  - "F-009.2"
+
+dependencies:
+  - "TASK_015"
+
+scope_paths:
+  - "public/"
+  - "src/client/"
+
+requirements:
+  - "實作 CSS Media Query 斷點 (768px)"
+  - "Header 響應式：手機版標題縮短、按鈕改為圖示"
+  - "LIVE 區塊：手機版置頂或可摺疊"
+  - "Bracket 區：依設計規範實作手機版佈局（垂直堆疊）"
+  - "字體大小響應式縮放"
+  - "確保所有內容在手機上可正常操作和閱讀"
+
+acceptance_criteria:
+  - "在 375px 寬度（iPhone SE）下正常顯示"
+  - "在 768px 以上寬度維持原有桌面版佈局"
+  - "Bracket 賽程表在手機上可完整瀏覽（無水平溢出或可滾動）"
+  - "LIVE 高亮效果在手機上同樣醒目"
+  - "無橫向捲軸（除非設計規範允許）"
+
+technical_notes:
+  - "使用 CSS Grid 或 Flexbox 實作響應式佈局"
+  - "考慮使用 CSS 變數管理斷點"
+  - "測試 Chrome DevTools 的裝置模擬器"
+  - "注意 viewport meta tag 設定"
+
+estimated_hours: 3
+complexity: "medium"
+
+related_tasks:
+  - "TASK_017"
+
+metadata:
+  created_at: "2026-02-04T12:00:00+08:00"
+  created_by: "Product Manager Agent"

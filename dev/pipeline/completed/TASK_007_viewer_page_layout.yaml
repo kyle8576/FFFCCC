@@ -1,0 +1,51 @@
+# TASK_007: Viewer 頁面基礎版型
+# Schema: dev/schemas/TASK.schema.json
+
+id: "TASK_007"
+title: "觀眾端頁面基礎版型"
+description: |
+  建立觀眾端 (/) 頁面的基礎 HTML 結構和版型。
+  包含 Header、LIVE 區塊、Bracket 區的骨架。
+
+priority: "P1"
+status: "pending"
+agent_type: "frontend"
+source: "F-006.1"
+
+dependencies:
+  - "TASK_001"
+
+scope_paths:
+  - "public/"
+  - "views/"
+  - "src/client/"
+
+requirements:
+  - "建立 index.html 基礎結構"
+  - "Header 區塊：標題、管理員按鈕"
+  - "LIVE 區塊：顯示目前進行中的賽局資訊"
+  - "Bracket 區塊：四輪欄位的容器結構"
+  - "引入 CSS 樣式檔"
+  - "引入 JavaScript 檔案"
+
+acceptance_criteria:
+  - "頁面可在 / 路徑正確載入"
+  - "Header 顯示賽事標題"
+  - "管理員按鈕可點擊（跳轉功能在後續任務）"
+  - "LIVE 區塊預留位置顯示「尚未設定」"
+  - "Bracket 區塊有四欄容器（R16/QF/SF/F）"
+
+technical_notes:
+  - "使用原生 HTML/CSS/JS，不使用框架"
+  - "CSS 遵循 DESIGN_SPEC.md 的規範"
+  - "預留 data attributes 供 JS 操作 DOM"
+
+estimated_hours: 2
+complexity: "simple"
+
+related_tasks:
+  - "TASK_001"
+
+metadata:
+  created_at: "2026-02-04T12:00:00+08:00"
+  created_by: "Product Manager Agent"

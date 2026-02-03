@@ -1,0 +1,410 @@
+{
+  "version": "1.0",
+  "project": null,
+  "tasks": [
+    {
+      "id": "TASK_001",
+      "title": "UI/UX 設計規範 - 賽程系統視覺設計",
+      "description": null,
+      "status": "completed",
+      "priority": "P1",
+      "agent_type": "designer",
+      "dependencies": [],
+      "scope_paths": [
+        "design/",
+        "docs/"
+      ],
+      "source_file": "TASK_001_ui_ux_design_spec.yaml",
+      "skill_path": ".claude/skills/designer/SKILL.md",
+      "created_at": null,
+      "started_at": "2026-02-03T17:41:53.963901+00:00",
+      "assigned_agent": "agent_174153_6a6b",
+      "branch": "task/task_001",
+      "estimated_hours": null,
+      "last_updated": "2026-02-03T17:42:24.040053500+00:00"
+    },
+    {
+      "id": "TASK_002",
+      "title": "後端資料模型與狀態初始化",
+      "description": null,
+      "status": "completed",
+      "priority": "P1",
+      "agent_type": "backend",
+      "dependencies": [],
+      "scope_paths": [
+        "server/",
+        "src/server/"
+      ],
+      "source_file": "TASK_002_state_model_init.yaml",
+      "skill_path": ".claude/skills/backend_engineer/SKILL.md",
+      "created_at": null,
+      "started_at": "2026-02-03T17:41:53.976157700+00:00",
+      "assigned_agent": "agent_174153_19d2",
+      "branch": "task/task_002",
+      "estimated_hours": null,
+      "last_updated": "2026-02-03T17:42:24.017264700+00:00"
+    },
+    {
+      "id": "TASK_003",
+      "title": "實作 GET /state API 端點",
+      "description": null,
+      "status": "completed",
+      "priority": "P1",
+      "agent_type": "backend",
+      "dependencies": [
+        "TASK_002"
+      ],
+      "scope_paths": [
+        "server/",
+        "src/server/"
+      ],
+      "source_file": "TASK_003_get_state_api.yaml",
+      "skill_path": ".claude/skills/backend_engineer/SKILL.md",
+      "created_at": null,
+      "started_at": "2026-02-03T17:44:51.950936700+00:00",
+      "assigned_agent": "agent_174451_2298",
+      "branch": "task/task_003",
+      "estimated_hours": null,
+      "last_updated": "2026-02-03T17:45:22.018287200+00:00"
+    },
+    {
+      "id": "TASK_004",
+      "title": "實作 POST /action API 與管理操作處理器",
+      "description": null,
+      "status": "completed",
+      "priority": "P1",
+      "agent_type": "backend",
+      "dependencies": [
+        "TASK_002",
+        "TASK_003"
+      ],
+      "scope_paths": [
+        "server/",
+        "src/server/"
+      ],
+      "source_file": "TASK_004_post_action_api.yaml",
+      "skill_path": ".claude/skills/backend_engineer/SKILL.md",
+      "created_at": null,
+      "started_at": "2026-02-03T17:45:52.025979200+00:00",
+      "assigned_agent": "agent_174552_85c7",
+      "branch": "task/task_004",
+      "estimated_hours": null,
+      "last_updated": "2026-02-03T17:46:22.062566600+00:00"
+    },
+    {
+      "id": "TASK_005",
+      "title": "實作 WebSocket 即時推播功能",
+      "description": null,
+      "status": "completed",
+      "priority": "P1",
+      "agent_type": "backend",
+      "dependencies": [
+        "TASK_003",
+        "TASK_004"
+      ],
+      "scope_paths": [
+        "server/",
+        "src/server/"
+      ],
+      "source_file": "TASK_005_websocket_broadcast.yaml",
+      "skill_path": ".claude/skills/backend_engineer/SKILL.md",
+      "created_at": null,
+      "started_at": "2026-02-03T17:46:52.099570300+00:00",
+      "assigned_agent": "agent_174652_e71a",
+      "branch": "task/task_005",
+      "estimated_hours": null,
+      "last_updated": "2026-02-03T17:47:22.165632400+00:00"
+    },
+    {
+      "id": "TASK_006",
+      "title": "實作狀態持久化（state.json）",
+      "description": null,
+      "status": "completed",
+      "priority": "P2",
+      "agent_type": "backend",
+      "dependencies": [
+        "TASK_004"
+      ],
+      "scope_paths": [
+        "server/",
+        "src/server/",
+        "data/"
+      ],
+      "source_file": "TASK_006_state_persistence.yaml",
+      "skill_path": ".claude/skills/backend_engineer/SKILL.md",
+      "created_at": null,
+      "started_at": "2026-02-03T17:47:52.193837200+00:00",
+      "assigned_agent": "agent_174752_064c",
+      "branch": "task/task_006",
+      "estimated_hours": null,
+      "last_updated": "2026-02-03T17:48:22.213346200+00:00"
+    },
+    {
+      "id": "TASK_007",
+      "title": "觀眾端頁面基礎版型",
+      "description": null,
+      "status": "completed",
+      "priority": "P1",
+      "agent_type": "frontend",
+      "dependencies": [
+        "TASK_001"
+      ],
+      "scope_paths": [
+        "public/",
+        "views/",
+        "src/client/"
+      ],
+      "source_file": "TASK_007_viewer_page_layout.yaml",
+      "skill_path": ".claude/skills/developer/SKILL.md",
+      "created_at": null,
+      "started_at": "2026-02-03T17:44:51.964834+00:00",
+      "assigned_agent": "agent_174451_f294",
+      "branch": "task/task_007",
+      "estimated_hours": null,
+      "last_updated": "2026-02-03T17:45:21.993349100+00:00"
+    },
+    {
+      "id": "TASK_008",
+      "title": "Bracket 賽程組件渲染",
+      "description": null,
+      "status": "completed",
+      "priority": "P1",
+      "agent_type": "frontend",
+      "dependencies": [
+        "TASK_007",
+        "TASK_003"
+      ],
+      "scope_paths": [
+        "public/",
+        "src/client/"
+      ],
+      "source_file": "TASK_008_bracket_component.yaml",
+      "skill_path": ".claude/skills/developer/SKILL.md",
+      "created_at": null,
+      "started_at": "2026-02-03T17:45:52.037576+00:00",
+      "assigned_agent": "agent_174552_0d3f",
+      "branch": "task/task_008",
+      "estimated_hours": null,
+      "last_updated": "2026-02-03T17:46:22.084712300+00:00"
+    },
+    {
+      "id": "TASK_009",
+      "title": "LIVE 高亮效果與狀態顯示",
+      "description": null,
+      "status": "completed",
+      "priority": "P1",
+      "agent_type": "frontend",
+      "dependencies": [
+        "TASK_008",
+        "TASK_001"
+      ],
+      "scope_paths": [
+        "public/",
+        "src/client/"
+      ],
+      "source_file": "TASK_009_live_highlight.yaml",
+      "skill_path": ".claude/skills/developer/SKILL.md",
+      "created_at": null,
+      "started_at": "2026-02-03T17:46:52.111277900+00:00",
+      "assigned_agent": "agent_174652_c681",
+      "branch": "task/task_009",
+      "estimated_hours": null,
+      "last_updated": "2026-02-03T17:47:22.144515600+00:00"
+    },
+    {
+      "id": "TASK_010",
+      "title": "前端 WebSocket 訂閱與自動更新",
+      "description": null,
+      "status": "completed",
+      "priority": "P1",
+      "agent_type": "frontend",
+      "dependencies": [
+        "TASK_008",
+        "TASK_005"
+      ],
+      "scope_paths": [
+        "public/",
+        "src/client/"
+      ],
+      "source_file": "TASK_010_ws_subscription.yaml",
+      "skill_path": ".claude/skills/developer/SKILL.md",
+      "created_at": null,
+      "started_at": "2026-02-03T17:47:52.181332+00:00",
+      "assigned_agent": "agent_174752_823f",
+      "branch": "task/task_010",
+      "estimated_hours": null,
+      "last_updated": "2026-02-03T17:48:22.238258200+00:00"
+    },
+    {
+      "id": "TASK_011",
+      "title": "管理端頁面與密碼驗證機制",
+      "description": null,
+      "status": "completed",
+      "priority": "P1",
+      "agent_type": "frontend",
+      "dependencies": [
+        "TASK_007",
+        "TASK_008"
+      ],
+      "scope_paths": [
+        "public/",
+        "views/",
+        "src/client/"
+      ],
+      "source_file": "TASK_011_admin_page_auth.yaml",
+      "skill_path": ".claude/skills/developer/SKILL.md",
+      "created_at": null,
+      "started_at": "2026-02-03T17:48:52.257054+00:00",
+      "assigned_agent": "agent_174852_9038",
+      "branch": "task/task_011",
+      "estimated_hours": null,
+      "last_updated": "2026-02-03T17:49:22.281490800+00:00"
+    },
+    {
+      "id": "TASK_012",
+      "title": "管理端 setLive / setWinner 互動功能",
+      "description": null,
+      "status": "completed",
+      "priority": "P1",
+      "agent_type": "frontend",
+      "dependencies": [
+        "TASK_011",
+        "TASK_004"
+      ],
+      "scope_paths": [
+        "public/",
+        "src/client/"
+      ],
+      "source_file": "TASK_012_setlive_setwinner.yaml",
+      "skill_path": ".claude/skills/developer/SKILL.md",
+      "created_at": null,
+      "started_at": "2026-02-03T17:49:52.290450300+00:00",
+      "assigned_agent": "agent_174952_2b58",
+      "branch": "task/task_012",
+      "estimated_hours": null,
+      "last_updated": "2026-02-03T17:50:22.313675500+00:00"
+    },
+    {
+      "id": "TASK_013",
+      "title": "Undo 功能與操作回饋 UI",
+      "description": null,
+      "status": "completed",
+      "priority": "P1",
+      "agent_type": "frontend",
+      "dependencies": [
+        "TASK_012"
+      ],
+      "scope_paths": [
+        "public/",
+        "src/client/"
+      ],
+      "source_file": "TASK_013_undo_feedback.yaml",
+      "skill_path": ".claude/skills/developer/SKILL.md",
+      "created_at": null,
+      "started_at": "2026-02-03T17:50:52.318952100+00:00",
+      "assigned_agent": "agent_175052_a937",
+      "branch": "task/task_013",
+      "estimated_hours": null,
+      "last_updated": "2026-02-03T17:51:22.348498700+00:00"
+    },
+    {
+      "id": "TASK_014",
+      "title": "端對端整合測試",
+      "description": null,
+      "status": "completed",
+      "priority": "P1",
+      "agent_type": "qa",
+      "dependencies": [
+        "TASK_013"
+      ],
+      "scope_paths": [
+        "tests/"
+      ],
+      "source_file": "TASK_014_e2e_integration_test.yaml",
+      "skill_path": ".claude/skills/qa_engineer/SKILL.md",
+      "created_at": null,
+      "started_at": "2026-02-03T17:51:52.364625500+00:00",
+      "assigned_agent": "agent_175152_ab20",
+      "branch": "task/task_014",
+      "estimated_hours": null,
+      "last_updated": "2026-02-03T17:52:22.391392500+00:00"
+    },
+    {
+      "id": "TASK_015",
+      "title": "RWD 響應式設計規範",
+      "description": null,
+      "status": "completed",
+      "priority": "P1",
+      "agent_type": "designer",
+      "dependencies": [],
+      "scope_paths": [
+        "design/",
+        "docs/"
+      ],
+      "source_file": "TASK_015_rwd_design_spec.yaml",
+      "skill_path": ".claude/skills/designer/SKILL.md",
+      "created_at": "2026-02-04T12:00:00+08:00",
+      "started_at": "2026-02-03T18:58:51.288745500+00:00",
+      "assigned_agent": "agent_185851_e9a1",
+      "branch": "task/task_015",
+      "estimated_hours": 2.0,
+      "last_updated": "2026-02-03T18:59:21.328209800+00:00"
+    },
+    {
+      "id": "TASK_016",
+      "title": "Viewer 頁面 RWD 響應式實作",
+      "description": null,
+      "status": "completed",
+      "priority": "P1",
+      "agent_type": "frontend",
+      "dependencies": [
+        "TASK_015"
+      ],
+      "scope_paths": [
+        "public/",
+        "src/client/"
+      ],
+      "source_file": "TASK_016_viewer_rwd.yaml",
+      "skill_path": ".claude/skills/developer/SKILL.md",
+      "created_at": "2026-02-04T12:00:00+08:00",
+      "started_at": "2026-02-03T18:59:51.341832500+00:00",
+      "assigned_agent": "agent_185951_b7a8",
+      "branch": "task/task_016",
+      "estimated_hours": 3.0,
+      "last_updated": "2026-02-03T19:00:21.374079800+00:00"
+    },
+    {
+      "id": "TASK_017",
+      "title": "Admin 頁面 RWD 響應式實作",
+      "description": null,
+      "status": "completed",
+      "priority": "P1",
+      "agent_type": "frontend",
+      "dependencies": [
+        "TASK_015"
+      ],
+      "scope_paths": [
+        "public/",
+        "src/client/"
+      ],
+      "source_file": "TASK_017_admin_rwd.yaml",
+      "skill_path": ".claude/skills/developer/SKILL.md",
+      "created_at": "2026-02-04T12:00:00+08:00",
+      "started_at": "2026-02-03T19:00:51.388512500+00:00",
+      "assigned_agent": "agent_190051_255b",
+      "branch": "task/task_017",
+      "estimated_hours": 2.0,
+      "last_updated": "2026-02-03T19:01:21.427685600+00:00"
+    }
+  ],
+  "statistics": {
+    "total": 17,
+    "pending": 0,
+    "in_progress": 0,
+    "completed": 17,
+    "blocked": 0,
+    "cancelled": 0
+  },
+  "metadata": null,
+  "last_updated": "2026-02-03T19:01:21.427685600+00:00"
+}

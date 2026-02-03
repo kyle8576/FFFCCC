@@ -1,0 +1,49 @@
+# TASK_009: LIVE 高亮與狀態顯示
+# Schema: dev/schemas/TASK.schema.json
+
+id: "TASK_009"
+title: "LIVE 高亮效果與狀態顯示"
+description: |
+  實作 LIVE 賽局的高亮效果和頁面上方的 LIVE 區塊顯示。
+  根據 state.liveMatchId 動態套用視覺效果。
+
+priority: "P1"
+status: "pending"
+agent_type: "frontend"
+source: "F-006.3"
+
+dependencies:
+  - "TASK_008"
+  - "TASK_001"
+
+scope_paths:
+  - "public/"
+  - "src/client/"
+
+requirements:
+  - "當 liveMatchId 有值時，對應 Match Card 加上 LIVE 高亮樣式"
+  - "LIVE 高亮包含：外框、陰影、LIVE 標籤"
+  - "LIVE 區塊顯示目前賽局資訊：輪次、對戰雙方、matchId"
+  - "無 LIVE 時 LIVE 區塊顯示「目前無進行中的賽局」"
+
+acceptance_criteria:
+  - "LIVE 場次的 Match Card 有明顯高亮效果"
+  - "LIVE 區塊正確顯示進行中的賽局資訊"
+  - "高亮效果符合 DESIGN_SPEC.md 的規範"
+  - "無 LIVE 時 LIVE 區塊顯示適當提示"
+
+technical_notes:
+  - "使用 CSS class 切換高亮效果"
+  - "LIVE 區塊格式：R16 • Team 7 vs Team 10 (m6)"
+  - "考慮加入脈動動畫增加醒目度"
+
+estimated_hours: 2
+complexity: "simple"
+
+related_tasks:
+  - "TASK_008"
+  - "TASK_001"
+
+metadata:
+  created_at: "2026-02-04T12:00:00+08:00"
+  created_by: "Product Manager Agent"

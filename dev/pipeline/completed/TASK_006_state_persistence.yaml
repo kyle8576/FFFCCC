@@ -1,0 +1,49 @@
+# TASK_006: 狀態持久化
+# Schema: dev/schemas/TASK.schema.json
+
+id: "TASK_006"
+title: "實作狀態持久化（state.json）"
+description: |
+  實作狀態落盤功能，將 state 寫入 state.json 檔案。
+  服務啟動時自動讀取並回復狀態。
+
+priority: "P2"
+status: "pending"
+agent_type: "backend"
+source: "F-005"
+
+dependencies:
+  - "TASK_004"
+
+scope_paths:
+  - "server/"
+  - "src/server/"
+  - "data/"
+
+requirements:
+  - "每次狀態變更後寫入 state.json"
+  - "服務啟動時檢查 state.json 是否存在"
+  - "若存在則讀取並回復狀態"
+  - "若不存在則使用 initState() 初始化"
+  - "寫入時使用 atomic write（先寫 temp 再 rename）"
+
+acceptance_criteria:
+  - "狀態變更後 state.json 被更新"
+  - "重啟服務後狀態能正確回復"
+  - "state.json 不存在時服務能正常啟動（使用初始狀態）"
+  - "檔案寫入失敗不會導致服務崩潰"
+
+technical_notes:
+  - "使用 fs.writeFileSync 或 fs.promises.writeFile"
+  - "考慮 debounce 避免頻繁寫入"
+  - "state.json 放在專案根目錄或 data/ 目錄"
+
+estimated_hours: 1
+complexity: "simple"
+
+related_tasks:
+  - "TASK_004"
+
+metadata:
+  created_at: "2026-02-04T12:00:00+08:00"
+  created_by: "Product Manager Agent"

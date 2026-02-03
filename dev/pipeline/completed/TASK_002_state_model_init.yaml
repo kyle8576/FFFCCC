@@ -1,0 +1,45 @@
+# TASK_002: 資料模型與狀態初始化
+# Schema: dev/schemas/TASK.schema.json
+
+id: "TASK_002"
+title: "後端資料模型與狀態初始化"
+description: |
+  建立 16 人單淘汰賽的完整資料模型和狀態初始化邏輯。
+  包含 Players、Matches、State 的資料結構定義。
+  實作 Bracket 對戰表的 next mapping（晉級路徑）。
+
+priority: "P1"
+status: "pending"
+agent_type: "backend"
+source: "F-001"
+
+scope_paths:
+  - "server/"
+  - "src/server/"
+
+requirements:
+  - "定義 Player 資料結構：id (p1~p16)、name"
+  - "定義 Match 資料結構：id (m1~m15)、round、a、b、winner、status、next"
+  - "定義 State 資料結構：players、matches、liveMatchId、history、updatedAt"
+  - "實作 initState() 函數生成初始狀態"
+  - "實作 Bracket 對戰表的 next mapping"
+  - "R16 勝者推進至 QF、QF 勝者推進至 SF、SF 勝者推進至 F"
+
+acceptance_criteria:
+  - "initState() 可生成包含 16 位玩家和 15 場比賽的初始狀態"
+  - "R16 的 8 場比賽各有兩位選手（m1-m8）"
+  - "QF/SF/F 的比賽初始為 TBD（a=null, b=null）"
+  - "每場比賽的 next 欄位正確指向下一輪的槽位"
+  - "State 包含空的 history 陣列用於 undo"
+
+technical_notes:
+  - "Bracket 對戰表固定：m1+m2→m9、m3+m4→m10、m5+m6→m11、m7+m8→m12"
+  - "m9+m10→m13、m11+m12→m14、m13+m14→m15"
+  - "m15 為決賽，next 為 null"
+
+estimated_hours: 2
+complexity: "medium"
+
+metadata:
+  created_at: "2026-02-04T12:00:00+08:00"
+  created_by: "Product Manager Agent"

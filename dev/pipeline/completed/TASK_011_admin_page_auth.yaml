@@ -1,0 +1,51 @@
+# TASK_011: Admin 頁面與密碼驗證
+# Schema: dev/schemas/TASK.schema.json
+
+id: "TASK_011"
+title: "管理端頁面與密碼驗證機制"
+description: |
+  建立管理端 (/admin) 頁面，包含密碼輸入和驗證機制。
+  實作從 Viewer 跳轉的入口按鈕。
+
+priority: "P1"
+status: "pending"
+agent_type: "frontend"
+source: "F-007.1"
+
+dependencies:
+  - "TASK_007"
+  - "TASK_008"
+
+scope_paths:
+  - "public/"
+  - "views/"
+  - "src/client/"
+
+requirements:
+  - "建立 admin.html 頁面"
+  - "頁面頂部顯示密碼輸入框"
+  - "密碼可從 URL query (?pass=xxx) 或 localStorage 讀取"
+  - "Viewer 的管理員按鈕：prompt 輸入密碼 → 跳轉 /admin?pass=xxx"
+  - "Admin 頁面共用 Bracket 渲染邏輯"
+
+acceptance_criteria:
+  - "點擊 Viewer 的管理員按鈕彈出密碼輸入框"
+  - "輸入密碼後跳轉至 /admin?pass=xxx"
+  - "Admin 頁面可從 URL 讀取密碼"
+  - "Admin 頁面顯示與 Viewer 相同的賽程"
+
+technical_notes:
+  - "密碼儲存在 localStorage 方便後續操作"
+  - "Admin 頁面可重用 Viewer 的 CSS 和 Bracket 渲染"
+  - "考慮顯示目前密碼狀態（已輸入/未輸入）"
+
+estimated_hours: 2
+complexity: "simple"
+
+related_tasks:
+  - "TASK_007"
+  - "TASK_008"
+
+metadata:
+  created_at: "2026-02-04T12:00:00+08:00"
+  created_by: "Product Manager Agent"

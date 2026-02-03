@@ -1,0 +1,52 @@
+# TASK_008: Bracket 組件渲染
+# Schema: dev/schemas/TASK.schema.json
+
+id: "TASK_008"
+title: "Bracket 賽程組件渲染"
+description: |
+  實作 Bracket 組件，渲染四輪賽程（R16/QF/SF/F）。
+  包含 Match Card 組件，顯示對戰雙方和狀態。
+
+priority: "P1"
+status: "pending"
+agent_type: "frontend"
+source: "F-006.2"
+
+dependencies:
+  - "TASK_007"
+  - "TASK_003"
+
+scope_paths:
+  - "public/"
+  - "src/client/"
+
+requirements:
+  - "實作 renderBracket(state) 函數"
+  - "渲染四輪欄位：R16（8場）、QF（4場）、SF（2場）、F（1場）"
+  - "實作 Match Card 組件顯示：matchId、選手A、選手B"
+  - "TBD 狀態顯示灰色 'TBD' 文字"
+  - "已結束場次顯示 WIN 標記在勝者旁"
+  - "從 /state API 取得資料並渲染"
+
+acceptance_criteria:
+  - "頁面載入時顯示完整 16 人賽程"
+  - "R16 顯示 8 張 Match Card"
+  - "QF/SF/F 顯示正確數量的 Match Card"
+  - "初始狀態 QF/SF/F 顯示 TBD"
+  - "勝者旁有 WIN 標記"
+
+technical_notes:
+  - "使用 state.players 建立 id→name 的 map"
+  - "遍歷 state.matches 依 round 分組渲染"
+  - "Match Card 結構預留 LIVE 高亮的 class"
+
+estimated_hours: 3
+complexity: "medium"
+
+related_tasks:
+  - "TASK_007"
+  - "TASK_003"
+
+metadata:
+  created_at: "2026-02-04T12:00:00+08:00"
+  created_by: "Product Manager Agent"

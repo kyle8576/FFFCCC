@@ -1,0 +1,50 @@
+# TASK_005: WebSocket 即時推播
+# Schema: dev/schemas/TASK.schema.json
+
+id: "TASK_005"
+title: "實作 WebSocket 即時推播功能"
+description: |
+  實作 WebSocket /ws 端點，提供即時狀態同步功能。
+  連線後立即推送當前狀態，狀態變更時 broadcast 給所有 clients。
+
+priority: "P1"
+status: "pending"
+agent_type: "backend"
+source: "F-004"
+
+dependencies:
+  - "TASK_003"
+  - "TASK_004"
+
+scope_paths:
+  - "server/"
+  - "src/server/"
+
+requirements:
+  - "整合 ws 套件至 Express 伺服器"
+  - "實作 /ws WebSocket 端點"
+  - "新連線時立即推送當前完整 state"
+  - "狀態變更後 broadcast 給所有連線的 clients"
+  - "處理連線斷開的清理"
+
+acceptance_criteria:
+  - "WebSocket 可成功連線至 /ws"
+  - "連線後立即收到完整 state JSON"
+  - "管理端執行操作後，所有 WS clients 在 1 秒內收到更新"
+  - "連線斷開後不會造成 server 錯誤"
+
+technical_notes:
+  - "使用 ws 套件（非 socket.io，保持輕量）"
+  - "推送格式：JSON.stringify(state)"
+  - "維護 clients Set 追蹤所有連線"
+
+estimated_hours: 2
+complexity: "medium"
+
+related_tasks:
+  - "TASK_003"
+  - "TASK_004"
+
+metadata:
+  created_at: "2026-02-04T12:00:00+08:00"
+  created_by: "Product Manager Agent"

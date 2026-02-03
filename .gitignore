@@ -1,0 +1,94 @@
+﻿# ============================================================
+# Kenaz AI Project .gitignore
+# ============================================================
+
+# Python
+__pycache__/
+*.py[cod]
+*.class
+*.so
+.Python
+build/
+develop-eggs/
+dist/
+downloads/
+eggs/
+.eggs/
+lib/
+lib64/
+parts/
+sdist/
+var/
+wheels/
+*.egg-info/
+.installed.cfg
+*.egg
+venv/
+.venv/
+ENV/
+
+# Node.js
+node_modules/
+npm-debug.log*
+yarn-debug.log*
+yarn-error.log*
+.pnpm-store/
+
+# IDE
+.idea/
+.vscode/
+*.swp
+*.swo
+*~
+.project
+.classpath
+.settings/
+
+# OS
+.DS_Store
+.DS_Store?
+._*
+.Spotlight-V100
+.Trashes
+ehthumbs.db
+Thumbs.db
+
+# Environment
+.env
+.env.local
+.env.*.local
+*.local.env
+
+# Logs
+logs/
+*.log
+
+# Testing
+.coverage
+htmlcov/
+.pytest_cache/
+.tox/
+.nox/
+
+# Build outputs
+dist/
+build/
+out/
+.next/
+.nuxt/
+
+# Kenaz AI specific
+kenaz-cortex/.chroma/
+kenaz-cortex/.cortex_cache/
+*.db
+*.sqlite
+
+# Pipeline temporary files
+dev/pipeline/logs/*.log
+dev/pipeline/archive/
+
+# Secrets (never commit these!)
+*.pem
+*.key
+credentials.json
+service-account.json

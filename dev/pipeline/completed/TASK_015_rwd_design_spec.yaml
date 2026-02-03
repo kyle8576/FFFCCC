@@ -1,0 +1,49 @@
+# TASK_015: RWD 設計規範
+# Schema: dev/schemas/TASK.schema.json
+
+id: "TASK_015"
+title: "RWD 響應式設計規範"
+description: |
+  定義賽程系統的響應式設計規範，包含斷點定義、手機版 Bracket 佈局策略、
+  觸控優化標準，為後續前端 RWD 實作提供設計依據。
+
+priority: "P1"
+status: "pending"
+agent_type: "designer"
+source: "F-009.1"
+feature_ids:
+  - "F-009"
+  - "F-009.1"
+
+dependencies: []
+
+scope_paths:
+  - "design/"
+  - "docs/"
+
+requirements:
+  - "定義兩個斷點：桌面 (≥768px) 與手機 (<768px)"
+  - "設計手機版 Bracket 佈局策略（推薦垂直堆疊方案）"
+  - "定義觸控友好的最小點擊區域 (44x44px)"
+  - "規劃 Header、LIVE 區塊、Bracket 區在手機上的排版"
+  - "考慮橫向與直向螢幕的差異"
+
+acceptance_criteria:
+  - "產出 RWD_DESIGN_SPEC.md 設計規範文件"
+  - "包含桌面與手機版的 Wireframe 或佈局說明"
+  - "定義所有響應式斷點與對應的樣式變化"
+  - "包含 Admin 頁面在觸控裝置上的互動優化建議"
+
+technical_notes:
+  - "可參考現有 DESIGN_SPEC.md 的色彩系統和視覺規範"
+  - "手機版 Bracket 建議採用垂直堆疊，每輪獨立區塊"
+  - "考慮 CSS Grid 或 Flexbox 的響應式實作方式"
+
+estimated_hours: 2
+complexity: "medium"
+
+related_tasks: []
+
+metadata:
+  created_at: "2026-02-04T12:00:00+08:00"
+  created_by: "Product Manager Agent"

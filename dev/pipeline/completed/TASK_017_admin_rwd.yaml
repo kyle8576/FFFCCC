@@ -1,0 +1,55 @@
+# TASK_017: Admin 頁面 RWD 實作
+# Schema: dev/schemas/TASK.schema.json
+
+id: "TASK_017"
+title: "Admin 頁面 RWD 響應式實作"
+description: |
+  根據 RWD 設計規範，實作管理端頁面的響應式佈局，
+  特別注重觸控操作的友好性，確保管理者可在手機上順暢操作賽程。
+
+priority: "P1"
+status: "pending"
+agent_type: "frontend"
+source: "F-009.3"
+feature_ids:
+  - "F-009"
+  - "F-009.3"
+
+dependencies:
+  - "TASK_015"
+
+scope_paths:
+  - "public/"
+  - "src/client/"
+
+requirements:
+  - "實作 CSS Media Query 斷點 (768px)"
+  - "管理按鈕放大至觸控友好尺寸 (至少 44x44px)"
+  - "setLive / setWinner 操作區域加大"
+  - "Undo 按鈕在手機版固定於螢幕底部"
+  - "密碼輸入框適配軟鍵盤（避免被遮擋）"
+  - "Match 卡片點擊區域加大"
+
+acceptance_criteria:
+  - "在 375px 寬度（iPhone SE）下正常操作"
+  - "所有可點擊元素至少 44x44px"
+  - "setLive 和 setWinner 操作可單手完成"
+  - "Undo 按鈕在手機上易於觸及"
+  - "密碼輸入時頁面不會被軟鍵盤完全遮擋"
+  - "操作回饋（Toast）在手機上清晰可見"
+
+technical_notes:
+  - "共用 TASK_016 的響應式基礎樣式"
+  - "考慮使用 position: fixed 實作底部固定按鈕"
+  - "注意 iOS Safari 的 viewport 高度問題（100vh bug）"
+  - "測試實際手機裝置或模擬器"
+
+estimated_hours: 2
+complexity: "medium"
+
+related_tasks:
+  - "TASK_016"
+
+metadata:
+  created_at: "2026-02-04T12:00:00+08:00"
+  created_by: "Product Manager Agent"

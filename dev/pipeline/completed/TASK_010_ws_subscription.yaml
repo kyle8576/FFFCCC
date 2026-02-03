@@ -1,0 +1,50 @@
+# TASK_010: WebSocket 訂閱與自動更新
+# Schema: dev/schemas/TASK.schema.json
+
+id: "TASK_010"
+title: "前端 WebSocket 訂閱與自動更新"
+description: |
+  實作前端 WebSocket 連線，訂閱狀態更新並自動重新渲染。
+  包含斷線重連機制和輪詢保底。
+
+priority: "P1"
+status: "pending"
+agent_type: "frontend"
+source: "F-006.4"
+
+dependencies:
+  - "TASK_008"
+  - "TASK_005"
+
+scope_paths:
+  - "public/"
+  - "src/client/"
+
+requirements:
+  - "頁面載入時建立 WebSocket 連線至 /ws"
+  - "收到訊息時更新 state 並重新渲染 Bracket"
+  - "實作斷線檢測和自動重連"
+  - "WS 斷線時 fallback 至輪詢（每 3 秒 GET /state）"
+  - "重連成功後停止輪詢"
+
+acceptance_criteria:
+  - "頁面載入時自動連線 WebSocket"
+  - "管理端操作後，觀眾端在 1 秒內自動更新"
+  - "WS 斷線後 3 秒內切換至輪詢模式"
+  - "WS 重連後自動恢復即時更新"
+
+technical_notes:
+  - "使用原生 WebSocket API"
+  - "重連間隔建議使用 exponential backoff"
+  - "輪詢使用 setInterval，重連成功後 clearInterval"
+
+estimated_hours: 2
+complexity: "medium"
+
+related_tasks:
+  - "TASK_008"
+  - "TASK_005"
+
+metadata:
+  created_at: "2026-02-04T12:00:00+08:00"
+  created_by: "Product Manager Agent"

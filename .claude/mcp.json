@@ -1,0 +1,12 @@
+{
+  "mcpServers": {
+    "kenaz-cortex": {
+      "command": "python",
+      "args": ["-m", "cortex.mcp.server"],
+      "cwd": "${workspaceFolder}",
+      "env": {
+        "PYTHONPATH": "${workspaceFolder}/kenaz-cortex/src"
+      }
+    }
+  }
+}

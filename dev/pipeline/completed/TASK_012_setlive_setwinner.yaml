@@ -1,0 +1,51 @@
+# TASK_012: setLive / setWinner 互動
+# Schema: dev/schemas/TASK.schema.json
+
+id: "TASK_012"
+title: "管理端 setLive / setWinner 互動功能"
+description: |
+  實作管理端的核心互動功能：
+  - 點擊 Match Card 設定為 LIVE
+  - 點擊選手 A/B 設定勝者
+
+priority: "P1"
+status: "pending"
+agent_type: "frontend"
+source: "F-007.2"
+
+dependencies:
+  - "TASK_011"
+  - "TASK_004"
+
+scope_paths:
+  - "public/"
+  - "src/client/"
+
+requirements:
+  - "Match Card 可點擊觸發 setLive"
+  - "選手 A/B 區域可點擊觸發 setWinner"
+  - "呼叫 POST /action API 時帶上 x-admin-pass header"
+  - "操作成功後等待 WS 更新（或手動 fetch state）"
+  - "視覺提示：可操作的區域顯示 hover 效果"
+
+acceptance_criteria:
+  - "點擊符合條件的 Match Card 可設定為 LIVE"
+  - "點擊 LIVE 場次的 A/B 選手可設定勝者"
+  - "勝者設定後自動推進下一輪並更新畫面"
+  - "不符合條件的操作顯示錯誤提示"
+
+technical_notes:
+  - "setLive 條件：a && b 都有值且 winner 為 null"
+  - "setWinner 條件：該場為 LIVE 或 pending（有 a && b）"
+  - "使用 fetch API 呼叫 POST /action"
+
+estimated_hours: 3
+complexity: "medium"
+
+related_tasks:
+  - "TASK_011"
+  - "TASK_004"
+
+metadata:
+  created_at: "2026-02-04T12:00:00+08:00"
+  created_by: "Product Manager Agent"

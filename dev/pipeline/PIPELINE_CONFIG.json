@@ -1,0 +1,10 @@
+﻿{
+  "version": "1.0",
+  "max_parallel_agents": 3,
+  "task_timeout_minutes": 60,
+  "poll_interval_seconds": 30,
+  "auto_enhancement": {
+    "enabled": false,
+    "max_cycles": 3
+  }
+}

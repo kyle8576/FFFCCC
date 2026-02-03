@@ -1,0 +1,48 @@
+# TASK_003: GET /state API
+# Schema: dev/schemas/TASK.schema.json
+
+id: "TASK_003"
+title: "實作 GET /state API 端點"
+description: |
+  實作 GET /state API 端點，回傳完整的賽程狀態。
+  包含 players、matches、liveMatchId、updatedAt 等資訊。
+
+priority: "P1"
+status: "pending"
+agent_type: "backend"
+source: "F-002"
+
+dependencies:
+  - "TASK_002"
+
+scope_paths:
+  - "server/"
+  - "src/server/"
+
+requirements:
+  - "建立 Express 伺服器框架"
+  - "實作 GET /state 端點"
+  - "回傳 JSON 格式的完整狀態"
+  - "包含 playerNameMap 便於前端渲染（可選）"
+
+acceptance_criteria:
+  - "GET /state 回傳 200 狀態碼"
+  - "回應包含 players 陣列"
+  - "回應包含 matches 物件"
+  - "回應包含 liveMatchId（可為 null）"
+  - "回應包含 updatedAt 時間戳"
+
+technical_notes:
+  - "使用 Express.js 框架"
+  - "考慮加入 CORS 支援"
+  - "回應格式範例見 PRODUCT_SPEC.md F-002"
+
+estimated_hours: 1
+complexity: "simple"
+
+related_tasks:
+  - "TASK_002"
+
+metadata:
+  created_at: "2026-02-04T12:00:00+08:00"
+  created_by: "Product Manager Agent"

@@ -1,0 +1,57 @@
+# TASK_004: POST /action API 與 Action Handlers
+# Schema: dev/schemas/TASK.schema.json
+
+id: "TASK_004"
+title: "實作 POST /action API 與管理操作處理器"
+description: |
+  實作 POST /action API 端點，處理管理端的操作請求。
+  包含 setLive、setWinner、undo、reset 四種 action handlers。
+  實作假密碼驗證機制（x-admin-pass header）。
+
+priority: "P1"
+status: "pending"
+agent_type: "backend"
+source: "F-003"
+
+dependencies:
+  - "TASK_002"
+  - "TASK_003"
+
+scope_paths:
+  - "server/"
+  - "src/server/"
+
+requirements:
+  - "實作 POST /action 端點"
+  - "實作 x-admin-pass header 驗證"
+  - "實作 setLive handler：設定指定場次為 LIVE"
+  - "實作 setWinner handler：設定勝者並推進下一輪"
+  - "實作 undo handler：撤回上一個操作"
+  - "實作 reset handler：重置賽程（可選）"
+  - "操作前儲存快照至 history 陣列"
+
+acceptance_criteria:
+  - "無效密碼回傳 401 Unauthorized"
+  - "setLive 只允許 a/b 都已確定且 winner 尚未產生的場次"
+  - "setLive 成功後該場 status 變為 live"
+  - "setWinner 成功後該場 status 變為 done，winner 設定正確"
+  - "setWinner 成功後勝者自動填入下一輪的對應槽位"
+  - "undo 可還原上一個操作的狀態"
+  - "不可對 TBD 場次執行 setLive"
+  - "不可對已有 winner 的場次再次 setWinner"
+
+technical_notes:
+  - "預設密碼可寫在環境變數或 config"
+  - "history 使用 deep clone 儲存快照"
+  - "推進邏輯參考 match.next 的 id 和 slot"
+
+estimated_hours: 4
+complexity: "complex"
+
+related_tasks:
+  - "TASK_002"
+  - "TASK_003"
+
+metadata:
+  created_at: "2026-02-04T12:00:00+08:00"
+  created_by: "Product Manager Agent"

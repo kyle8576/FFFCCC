@@ -1,0 +1,49 @@
+# TASK_013: Undo 功能與操作回饋
+# Schema: dev/schemas/TASK.schema.json
+
+id: "TASK_013"
+title: "Undo 功能與操作回饋 UI"
+description: |
+  實作管理端的 Undo 按鈕和操作回饋機制。
+  包含 Toast 通知和錯誤提示。
+
+priority: "P1"
+status: "pending"
+agent_type: "frontend"
+source: "F-007.3"
+
+dependencies:
+  - "TASK_012"
+
+scope_paths:
+  - "public/"
+  - "src/client/"
+
+requirements:
+  - "Admin 頁面顯示 Undo 按鈕"
+  - "點擊 Undo 呼叫 POST /action { type: 'undo' }"
+  - "實作 Toast 通知組件"
+  - "操作成功顯示成功 Toast"
+  - "操作失敗顯示錯誤 Toast（含錯誤訊息）"
+  - "Undo 無可撤銷操作時提示用戶"
+
+acceptance_criteria:
+  - "Undo 按鈕可成功撤銷上一個操作"
+  - "撤銷後畫面正確更新"
+  - "操作成功/失敗有視覺回饋"
+  - "Toast 在 3 秒後自動消失"
+
+technical_notes:
+  - "Toast 使用 fixed position 顯示在頁面角落"
+  - "錯誤 Toast 使用紅色，成功使用綠色"
+  - "可考慮顯示 history 長度讓用戶知道可撤銷次數"
+
+estimated_hours: 2
+complexity: "simple"
+
+related_tasks:
+  - "TASK_012"
+
+metadata:
+  created_at: "2026-02-04T12:00:00+08:00"
+  created_by: "Product Manager Agent"

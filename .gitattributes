@@ -1,0 +1,22 @@
+﻿# Auto detect text files and perform LF normalization
+* text=auto
+
+# Force batch scripts to always use CRLF
+*.bat text eol=crlf
+*.cmd text eol=crlf
+
+# Force shell scripts to always use LF
+*.sh text eol=lf
+*.ps1 text eol=crlf
+
+# Denote all files that are truly binary
+*.png binary
+*.jpg binary
+*.jpeg binary
+*.gif binary
+*.ico binary
+*.pdf binary
+*.woff binary
+*.woff2 binary
+*.ttf binary
+*.eot binary
