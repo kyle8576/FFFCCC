@@ -75,8 +75,9 @@ import { TournamentContextType } from '../types';
 
 const TournamentContext = createContext<TournamentContextType | undefined>(undefined);
 
-const CHANNEL_NAME = 'tournament_sync_channel';
 const STORAGE_KEY = 'tournament_state_v1';
+// WebSocket server URL - change this after deploying to Fly.io
+const WS_URL = import.meta.env.VITE_WS_URL || 'ws://localhost:8080';
 
 export const TournamentProvider: React.FC<{ children: React.ReactNode }> = ({ children }) => {
   // Try to load from local storage first
@@ -98,52 +99,92 @@ export const TournamentProvider: React.FC<{ children: React.ReactNode }> = ({ ch
 
   const [stateWrapper, dispatch] = useReducer(tournamentReducer, undefined, loadState);
   const [isAdmin, setIsAdmin] = useState(false);
-  const broadcastChannelRef = useRef<BroadcastChannel | null>(null);
-  // Track if the last state change came from a broadcast (to prevent re-broadcasting)
-  const isFromBroadcastRef = useRef(false);
+  const wsRef = useRef<WebSocket | null>(null);
+  // Track if the last state change came from WebSocket (to prevent re-broadcasting)
+  const isFromWSRef = useRef(false);
   // Track latest updatedAt to avoid closure issues
   const latestUpdatedAtRef = useRef(stateWrapper.current.updatedAt);
+  // Reconnection state
+  const reconnectTimeoutRef = useRef<number | null>(null);
 
   // Keep latestUpdatedAtRef in sync
   useEffect(() => {
     latestUpdatedAtRef.current = stateWrapper.current.updatedAt;
   }, [stateWrapper.current.updatedAt]);
 
-  // --- Persistence & Sync Side Effects ---
-  useEffect(() => {
-    // 1. Initialize BroadcastChannel
-    broadcastChannelRef.current = new BroadcastChannel(CHANNEL_NAME);
+  // --- WebSocket Connection ---
+  const connectWebSocket = () => {
+    if (wsRef.current?.readyState === WebSocket.OPEN) return;
 
-    broadcastChannelRef.current.onmessage = (event) => {
-        if (event.data && event.data.type === 'SYNC_STATE') {
-            // Received state update from another tab
-            const newState = event.data.payload as TournamentState;
-            // Only update if incoming state is actually newer (use ref to avoid closure issues)
-            if (newState.updatedAt > latestUpdatedAtRef.current) {
-                isFromBroadcastRef.current = true; // Mark as coming from broadcast
-                dispatch({ type: 'SET_STATE', payload: newState });
-            }
-        }
+    console.log('Connecting to WebSocket:', WS_URL);
+    const ws = new WebSocket(WS_URL);
+
+    ws.onopen = () => {
+      console.log('WebSocket connected');
+      // Clear any pending reconnection
+      if (reconnectTimeoutRef.current) {
+        clearTimeout(reconnectTimeoutRef.current);
+        reconnectTimeoutRef.current = null;
+      }
     };
 
+    ws.onmessage = (event) => {
+      try {
+        const data = JSON.parse(event.data);
+        if (data.type === 'SYNC_STATE') {
+          const newState = data.payload as TournamentState;
+          // Only update if incoming state is actually newer
+          if (newState.updatedAt > latestUpdatedAtRef.current) {
+            isFromWSRef.current = true;
+            dispatch({ type: 'SET_STATE', payload: newState });
+          }
+        }
+      } catch (e) {
+        console.error('Failed to parse WebSocket message:', e);
+      }
+    };
+
+    ws.onclose = () => {
+      console.log('WebSocket disconnected, reconnecting in 3s...');
+      wsRef.current = null;
+      // Auto-reconnect after 3 seconds
+      reconnectTimeoutRef.current = window.setTimeout(() => {
+        connectWebSocket();
+      }, 3000);
+    };
+
+    ws.onerror = (error) => {
+      console.error('WebSocket error:', error);
+    };
+
+    wsRef.current = ws;
+  };
+
+  // --- Initialize WebSocket ---
+  useEffect(() => {
+    connectWebSocket();
+
     return () => {
-        broadcastChannelRef.current?.close();
+      if (reconnectTimeoutRef.current) {
+        clearTimeout(reconnectTimeoutRef.current);
+      }
+      wsRef.current?.close();
     };
   }, []);
 
-  // 2. Persist & Broadcast on change
+  // --- Persist & Broadcast on change ---
   useEffect(() => {
     localStorage.setItem(STORAGE_KEY, JSON.stringify(stateWrapper.current));
 
-    // Only broadcast if this change was NOT from a broadcast (prevent echo)
-    if (broadcastChannelRef.current && !isFromBroadcastRef.current) {
-        broadcastChannelRef.current.postMessage({
-            type: 'SYNC_STATE',
-            payload: stateWrapper.current
-        });
+    // Only broadcast if this change was NOT from WebSocket (prevent echo)
+    if (wsRef.current?.readyState === WebSocket.OPEN && !isFromWSRef.current) {
+      wsRef.current.send(JSON.stringify({
+        type: 'SYNC_STATE',
+        payload: stateWrapper.current
+      }));
     }
     // Reset the flag after processing
-    isFromBroadcastRef.current = false;
+    isFromWSRef.current = false;
   }, [stateWrapper.current]);
 
 
